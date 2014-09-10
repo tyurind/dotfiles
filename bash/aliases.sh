@@ -26,8 +26,9 @@ alias fgrep='fgrep --color=auto'              # show differences in colour
 alias la='ls -A'
 alias l='ls -CF'
 alias ll='ls -hAl -v --file-type --color=auto --group-directories-first --time-style=+%h\ %d\ %R'
+alias ..='cd ..'
 # -----------------------------------------------------------------------------
-# 
+#
 # alias ls='ls -F --color=always'
 # alias dir='dir -F --color=always'
 # alias ll='ls -l'

@@ -1,4 +1,16 @@
 
+# Подсветка директорий
+DIR_COLORS=
+listFiles="/etc/DIR_COLORS /etc/dircolors ~/.config/bash/dircolors ~/.config/dircolors ~/.dircolors"
+for f in listFiles; do
+  [[ -f "$f" ]] && DIR_COLORS="$f"
+done
+if [[ "$DIR_COLORS" != "" ]]; then
+  eval "$(dircolors -b $DIR_COLORS)"
+fi
+unset f DIR_COLORS
+
+
 
 __has_parent_dir () {
     # Utility function so we can test for things like .git/.hg without firing up a
@@ -26,17 +38,18 @@ __vcs_name() {
     fi
 }
 
+if [[ -x tput ]]; then
+    black=$(tput -Txterm setaf 0)
+    red=$(tput -Txterm setaf 1)
+    green=$(tput -Txterm setaf 2)
+    yellow=$(tput -Txterm setaf 3)
+    dk_blue=$(tput -Txterm setaf 4)
+    pink=$(tput -Txterm setaf 5)
+    lt_blue=$(tput -Txterm setaf 6)
 
-black=$(tput -Txterm setaf 0)
-red=$(tput -Txterm setaf 1)
-green=$(tput -Txterm setaf 2)
-yellow=$(tput -Txterm setaf 3)
-dk_blue=$(tput -Txterm setaf 4)
-pink=$(tput -Txterm setaf 5)
-lt_blue=$(tput -Txterm setaf 6)
-
-bold=$(tput -Txterm bold)
-reset=$(tput -Txterm sgr0)
+    bold=$(tput -Txterm bold)
+    reset=$(tput -Txterm sgr0)
+fi
 
 # Nicely formatted terminal prompt
 export PS1='\n\[$bold\]\[$black\][\[$dk_blue\]\A\[$black\]]-[\[$green\]\u\[$yellow\]@\[$green\]\h\[$black\]]-[\[$pink\]\w\[$black\]]\[\033[0;33m\]$(__vcs_name) \[\033[00m\]\[$reset\]\n\[$reset\]\$ '
