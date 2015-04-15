@@ -1,2 +1,11 @@
+# OS X.
+.DS_Store
+
+# Temp nibs and swap files.
+*~.nib
+*.swp
+*~
+
+# User-specific
 tmp
 tmp-*

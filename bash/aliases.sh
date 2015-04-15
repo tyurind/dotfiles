@@ -36,7 +36,7 @@ alias ..='cd ..'
 # alias rm='rm -i'
 # alias mv='mv -iv'
 # alias grep='grep --color=auto -in'
-alias ..='cd ..'
+alias ...='cd ../..'
 
 
 
