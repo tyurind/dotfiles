@@ -208,5 +208,14 @@ echo -e "${reset}["\
 " $PWD"\
 "\$${reset}"
 
+
+echo "${reset}["\
+"${dk_blue}${bold}$USER${reset}"\
+"@${reset}"\
+"${red}${bold}${HOSTNAME}${reset}]"\
+" ${pink}${bold}$PWD${reset}"\
+"\$${reset}"
+
+
 echo "${reset}----------------"
 

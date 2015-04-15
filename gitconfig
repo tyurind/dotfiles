@@ -15,7 +15,7 @@
     sh = auto
 
 [core]
-    ; autocrlf = false
+    autocrlf = input
     ; safecrlf = false
     ; editor = nano
     quotepath = false

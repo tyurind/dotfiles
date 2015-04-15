@@ -16,9 +16,14 @@ set output-meta on
 export EDITOR=vim
 
 
-
+##
+## IncludeSource files
+##
 source  "$DIR/bash/function.sh"
 source  "$DIR/bash/history.sh"
 source  "$DIR/bash/aliases.sh"
 source  "$DIR/bash/color.sh"
+##
+## /END IncludeSource
+##
 

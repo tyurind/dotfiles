@@ -1,7 +1,13 @@
+##
+## Colors
+##
+
+# Локали (cygwin)
+#export LANG=$(locale -uU)
 
 # Подсветка директорий
 DIR_COLORS=
-listFiles="/etc/DIR_COLORS /etc/dircolors ~/.config/bash/dircolors ~/.config/dircolors ~/.dircolors"
+listFiles="/etc/DIR_COLORS /etc/dircolors ~/.config/bash/dircolors ~/.dircolors"
 for f in listFiles; do
   [[ -f "$f" ]] && DIR_COLORS="$f"
 done
@@ -9,6 +15,61 @@ if [[ "$DIR_COLORS" != "" ]]; then
   eval "$(dircolors -b $DIR_COLORS)"
 fi
 unset f DIR_COLORS
+
+
+# Основная строка приглашения
+#   user@host:server and current_directory
+# PS1='\[\e]0;\w\a\]\n\[\e[32m\]server \u@\h \[\e[33m\]\w\[\e[0m\]\n\$ '
+#
+# С переводом на новую строчку
+PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ '
+
+# Без перевода на новую строчку
+#PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\$ '
+
+# Эффективно для рута, подсвечивает красным супераользователя
+# PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\e[31;01m\]\u\[\e[0m\]@\h:\w\$ '
+#
+# Для самого рута
+# PS1="\[\e[31m\]\u\[\e[0m\]@\h: \w\a# "
+#
+# Рут вошел через пользователя
+if [ "$(whoami)" = "root" ]; then
+    echo "Welcome ROOT !"
+    PS1='\[\e]0;\w\a\]\n\[\e[31;01m\]\u\[\e[0m\]\[\e[32m\]@\h \[\e[33m\]\w\[\e[0m\]\n\[\e[31;01m\]\$\[\e[0m\] '
+fi
+# -----------------------------------------------------------------------------
+
+
+##
+## bash_completion
+##
+
+# Uncomment to turn on programmable completion enhancements.
+# Any completions you add in ~/.bash_completion are sourced last.
+[[ -f ~/.bash_completion ]] && . ~/.bash_completion
+
+# [[ -f "/etc/bash_completion.d/git" ]] &&  . "/etc/bash_completion.d/git"
+
+
+if [ -d ~/.local/bin ]; then
+  PATH="~/.local/bin:$PATH"
+fi
+
+
+
+
+
+# Подсветка директорий
+# DIR_COLORS=
+# listFiles="/etc/DIR_COLORS /etc/dircolors ~/.config/bash/dircolors ~/.config/dircolors ~/.dircolors"
+# for f in listFiles; do
+#   [[ -f "$f" ]] && DIR_COLORS="$f"
+# done
+# if [[ "$DIR_COLORS" != "" ]]; then
+#   eval "$(dircolors -b $DIR_COLORS)"
+# fi
+# unset f DIR_COLORS
 
 
 
@@ -38,7 +99,7 @@ __vcs_name() {
     fi
 }
 
-if [[ -x tput ]]; then
+# if [[ -x tput ]]; then
     black=$(tput -Txterm setaf 0)
     red=$(tput -Txterm setaf 1)
     green=$(tput -Txterm setaf 2)
@@ -49,7 +110,9 @@ if [[ -x tput ]]; then
 
     bold=$(tput -Txterm bold)
     reset=$(tput -Txterm sgr0)
-fi
+# fi
 
 # Nicely formatted terminal prompt
-export PS1='\n\[$bold\]\[$black\][\[$dk_blue\]\A\[$black\]]-[\[$green\]\u\[$yellow\]@\[$green\]\h\[$black\]]-[\[$pink\]\w\[$black\]]\[\033[0;33m\]$(__vcs_name) \[\033[00m\]\[$reset\]\n\[$reset\]\$ '
+# export PS1='\n\[$bold\]\[$black\][\[$dk_blue\]\A\[$black\]]-[\[$green\]\u\[$yellow\]@\[$green\]\h\[$black\]]-[\[$pink\]\w\[$black\]]\[\033[0;33m\]$(__vcs_name) \[\033[00m\]\[$reset\]\n\[$reset\]\$ '
+
+export PS1='\n[\[$bold\]\[$dk_blue\]\u\[$yellow\]@\[$bold\]\[$red\]\h\[$black\]\[$reset\]] \[$bold\]\[$pink\]\w \[\033[0;33m\]$(__vcs_name) \[\033[00m\]\[$reset\]\n\[$reset\]\$ '
