@@ -42,6 +42,40 @@ set rtp+=$GOROOT/misc/vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vundle
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+
+" Plugin 'VundleVim/Vundle.vim'
+Bundle 'editorconfig/editorconfig-vim'
+Bundle 'scrooloose/nerdtree'
+
+Plugin 'scrooloose/syntastic'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'elzr/vim-json'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'highlight_current_line.vim'
+
+" Disable the scrollbars (NERDTree)
+set guioptions-=r
+set guioptions-=L
+" Keep NERDTree window fixed between multiple toggles
+set winfixwidth
+
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -66,6 +100,8 @@ nmap <leader>w :w!<cr>
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
+
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
