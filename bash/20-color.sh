@@ -38,7 +38,7 @@ __vcs_name() {
     fi
 }
 
-if [[ -x tput ]]; then
+# if [[ -x tput ]]; then
     black=$(tput -Txterm setaf 0)
     red=$(tput -Txterm setaf 1)
     green=$(tput -Txterm setaf 2)
@@ -49,7 +49,7 @@ if [[ -x tput ]]; then
 
     bold=$(tput -Txterm bold)
     reset=$(tput -Txterm sgr0)
-fi
+# fi
 
 # Nicely formatted terminal prompt
 export PS1='\n\[$bold\]\[$black\][\[$dk_blue\]\A\[$black\]]-[\[$green\]\u\[$yellow\]@\[$green\]\h\[$black\]]-[\[$pink\]\w\[$black\]]\[\033[0;33m\]$(__vcs_name) \[\033[00m\]\[$reset\]\n\[$reset\]\$ '

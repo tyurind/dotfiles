@@ -55,7 +55,7 @@ cd_func ()
 
   return 0
 }
-
+alias cd=cd_func
 
 
 _www_cd ()
@@ -67,7 +67,7 @@ _www_cd ()
         cd /var/www && return
     fi
 }
-
+alias www=_www_cd
 
 
 _pear_cd_dir ()
