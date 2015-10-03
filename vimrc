@@ -63,6 +63,10 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'elzr/vim-json'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'highlight_current_line.vim'
+Plugin 'Yggdroot/indentLine'
+Plugin 'wavded/vim-stylus'
+Plugin 'altercation/vim-colors-solarized'
+
 
 " Disable the scrollbars (NERDTree)
 set guioptions-=r
