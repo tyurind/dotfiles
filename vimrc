@@ -66,6 +66,7 @@ Plugin 'highlight_current_line.vim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'wavded/vim-stylus'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'scrooloose/vim-statline'
 
 
 " Disable the scrollbars (NERDTree)
