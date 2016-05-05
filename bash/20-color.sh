@@ -38,6 +38,8 @@ __vcs_name() {
     fi
 }
 
+# export PS1='\n\[$bold\]\[$dk_blue\]$(__is_root)\u\[$yellow\]@\[$dk_blue\]\h\[$black\]:\[$pink\]\w\[$black\]\[$reset\]\$ '
+
 # if [[ -x tput ]]; then
     black=$(tput -Txterm setaf 0)
     red=$(tput -Txterm setaf 1)
@@ -50,6 +52,27 @@ __vcs_name() {
     bold=$(tput -Txterm bold)
     reset=$(tput -Txterm sgr0)
 # fi
+
+__fob_is_root()
+{
+    if [ $(id -u) == "0" ]; then
+        echo "$bold$red"
+    fi
+}
+
+__fob_cat_path()
+{
+    DIR="$1"
+    DIR="${DIR/${HOME}/~}"
+
+    VAR_LENGTH=${#DIR}
+
+    if [[ (($VAR_LENGTH > 40)) ]]; then
+        DIR="...${DIR: -30}"
+    fi
+
+    echo "${DIR}"
+}
 
 
 # Основная строка приглашения
@@ -77,6 +100,6 @@ fi
 #
 
 # Nicely formatted terminal prompt
-export PS1='\n\[$bold\]\[$black\][\[$dk_blue\]\A\[$black\]]-[\[$green\]\u\[$yellow\]@\[$green\]\h\[$black\]]-[\[$pink\]\w\[$black\]]\[\033[0;33m\]$(__vcs_name) \[\033[00m\]\[$reset\]\n\[$reset\]\$ '
+export PS1='\n\[$bold\]\[$black\][\[$dk_blue\]\A\[$black\]]-[\[$green\]$(__fob_is_root)\u\[$yellow\]@\[$green\]\h\[$black\]]-[\[$pink\]$(__fob_cat_path \w)\[$black\]]\[\033[0;33m\]$(__vcs_name) \[\033[00m\]\[$reset\]\n\[$reset\]\$ '
 
 # export PS1='\n[\[$bold\]\[$dk_blue\]\u\[$yellow\]@\[$bold\]\[$red\]\h\[$black\]\[$reset\]] \[$bold\]\[$pink\]\w \[\033[0;33m\]$(__vcs_name) \[\033[00m\]\[$reset\]\n\[$reset\]\$ '

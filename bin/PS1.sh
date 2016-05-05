@@ -156,29 +156,34 @@ if [[ "$1" == "showfull" ]]; then
     exit
 fi
 
-echo -e "${black}black"
-echo -e "${red}red"
-echo -e "${green}green"
-echo -e "${yellow}yellow"
-echo -e "${dk_blue}dk_blue"
-echo -e "${pink}pink"
-echo -e "${lt_blue}lt_blue"
-
 echo "${reset}----------------"
 
-echo -e "${black}${bold}black bold"
-echo -e "${red}${bold}red bold"
-echo -e "${green}${bold}green bold"
-echo -e "${yellow}${bold}yellow bold"
-echo -e "${dk_blue}${bold}dk_blue bold"
-echo -e "${pink}${bold}pink bold"
-echo -e "${lt_blue}${bold}lt_blue bold"
-
+echo -e "${reset}black:    ${black}black        ${reset}${black}${bold}black bold"
+echo -e "${reset}red:      ${red}red            ${reset}${red}${bold}red bold"
+echo -e "${reset}green:    ${green}green        ${reset}${green}${bold}green bold"
+echo -e "${reset}yellow:   ${yellow}yellow      ${reset}${yellow}${bold}yellow bold"
+echo -e "${reset}dk_blue:  ${dk_blue}dk_blue    ${reset}${dk_blue}${bold}dk_blue bold"
+echo -e "${reset}pink:     ${pink}pink          ${reset}${pink}${bold}pink bold"
+echo -e "${reset}lt_blue:  ${lt_blue}lt_blue    ${reset}${lt_blue}${bold}lt_blue bold"
 
 echo -e "${reset}reset"
 echo -e "${reset}${bold}reset bold"
 
 echo "${reset}----------------"
+
+# echo -e "${black}${bold}black bold"
+# echo -e "${red}${bold}red bold"
+# echo -e "${green}${bold}green bold"
+# echo -e "${yellow}${bold}yellow bold"
+# echo -e "${dk_blue}${bold}dk_blue bold"
+# echo -e "${pink}${bold}pink bold"
+# echo -e "${lt_blue}${bold}lt_blue bold"
+
+
+# echo -e "${reset}reset"
+# echo -e "${reset}${bold}reset bold"
+
+# echo "${reset}----------------"
 
 
 echo;
@@ -210,3 +215,13 @@ echo -e "${reset}["\
 
 echo "${reset}----------------"
 
+
+echo "User     \u : $(id --user --name)"
+echo "Hostname \h : $(hostname)"
+echo "PWD:     \w : $(pwd)"
+echo "\$/#      \\\$ : \$"
+# echo "git:      $(__git_ps1)"
+
+
+# echo $PS1
+# \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u\[\033[01;33m\]@\[\033[01;36m\]\h \[\033[01;33m\]\w \[\033[01;35m\]\$ \[\033[00m\]
