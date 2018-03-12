@@ -5,19 +5,29 @@ sudo apt-get install -y \
     ca-certificates \
     curl \
     software-properties-common
+    
+
+# curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+# sudo apt-key fingerprint 0EBFCD88
+
+# sudo add-apt-repository \
+#    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+#    $(lsb_release -cs) \
+#    stable"
+
+# sudo apt-get update
+# sudo apt-get install docker-ce
 
 
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
-sudo apt-key fingerprint 0EBFCD88
+curl -fsSL get.docker.com -o /tmp/get-docker.sh
+sudo sh /tmp/get-docker.sh
+rm /tmp/get-docker.sh
 
-sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
-
-sudo apt-get update
-sudo apt-get install docker-ce
+CURRENT_USER=$(id -un)
+sudo usermod -a -G docker $CURRENT_USER
+sudo docker version
 
 
 echo "download docker-machine"
