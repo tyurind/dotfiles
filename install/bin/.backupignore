@@ -1,0 +1,17 @@
+*.backup.tar.gz
+.vagrant.d
+VirtualBox VMs
+.PhpStorm2017.2
+.PhpStorm2017.3
+.WebStorm2017.2
+.WebStorm2017.3
+Desktop
+Downloads
+Шаблоны
+Общедоступные
+Documents
+Music
+Pictures
+Videos
+Projects
+.wine
