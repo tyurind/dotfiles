@@ -213,8 +213,10 @@ echo "${reset}----------------"
 
 ## Scheme 1
 # PS1='\n\[$bold\]\[$black\][\[$dk_blue\]\A\[$black\]]-[\[$green\]\u\[$yellow\]@\[$green\]\h\[$black\]]-[\[$pink\]\w\[$black\]]\[\033[0;33m\]$(__vcs_name) \[\033[00m\]\[$reset\]\n\[$reset\]\$ '
+
 ## Scheme 2
 # PS1='\[\e]0;\w\a\]\[\e[07;91m\]\u\[\e[00;91m\]@\h:\[\e[0m\]\w\$ '
+
 ## Scheme 3
 # PS1='\n[\[$bold\]\[$dk_blue\]\u\[$yellow\]@\[$bold\]\[$red\]\h\[$black\]\[$reset\]] \[$bold\]\[$pink\]\w \[\033[0;33m\]$(__vcs_name) \[\033[00m\]\[$reset\]\n\[$reset\]\$ '
 

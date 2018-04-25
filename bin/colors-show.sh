@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# See: https://misc.flogisoft.com/bash/tip_colors_and_formatting
+
 showfull()
 {
 echo "#### 3Xm: ==>>"

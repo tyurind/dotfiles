@@ -12,6 +12,41 @@ unset f DIR_COLORS
 
 
 
+__has_parent_dir_is_vcs ()
+{
+    local gt=""
+
+    if [ -d "${1}" ]; then
+        return 0;
+    fi
+
+
+    # if [ "${1:(-4)}" != ".git" ]; then return 1; fi
+
+    if [ -r "${1}" ]; then
+        gt=$(cat "${1}")
+        if [ "${gt%%:*}" = "gitdir" ]; then
+            return 0
+        fi
+    fi
+
+    return 1;
+}
+
+__has_parent_git_dir () {
+    if __has_parent_dir_is_vcs "$1"; then return 0; fi
+
+    current="."
+    while [ ! "$current" -ef "$current/.." ]; do
+        if __has_parent_dir_is_vcs "$current/$1"; then
+            return 0;
+        fi
+        current="$current/..";
+    done
+
+    return 1;
+}
+
 __has_parent_dir () {
     # Utility function so we can test for things like .git/.hg without firing up a
     # separate process
@@ -31,7 +66,7 @@ __has_parent_dir () {
 __vcs_name() {
     if [ -d .svn ]; then
         echo "-[svn]";
-    elif __has_parent_dir ".git"; then
+    elif __has_parent_git_dir ".git"; then
         echo "-[$(__git_ps1 'git %s')]";
     elif __has_parent_dir ".hg"; then
         echo "-[hg $(hg branch)]"
