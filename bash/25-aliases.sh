@@ -36,6 +36,3 @@ alias ll='ls -hAl -v --file-type --color=auto --group-directories-first --time-s
 # alias mv='mv -iv'
 # alias grep='grep --color=auto -in'
 alias ..='cd ..'
-
-
-

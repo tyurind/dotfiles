@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt-get purge libappstream3 >/dev/null 2>&1
+#sudo apt-get purge libappstream3 >/dev/null 2>&1
 
 sudo apt-get update -qy
 
