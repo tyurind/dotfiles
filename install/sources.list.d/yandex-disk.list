@@ -1,0 +1,4 @@
+# Install key
+#    wget http://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG -O- | sudo apt-key add -
+
+deb http://repo.yandex.ru/yandex-disk/deb/ stable main
