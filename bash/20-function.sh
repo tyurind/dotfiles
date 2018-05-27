@@ -98,3 +98,14 @@ dockerips()
 }
 alias _id_='docker ps -l -q'
 
+
+_git_diff_files()
+{
+    local ARGS="$@"
+    if [ "${1}" = "" ]; then
+      ARGS="origin/master"
+    fi
+
+    git cherry $ARGS | cut -d " " -f 2 | xargs -I {} git diff-tree --no-commit-id --name-only -r {} | sort | uniq | while read f; do test -f "$f" && echo "$f"; done
+}
+alias git-diff-files=_git_diff_files
