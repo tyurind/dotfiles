@@ -10,7 +10,7 @@ sudo apt-get install -y \
     apt-transport-https \
     ca-certificates \
     bash-completion whois \
-    git git-flow git-sh \
+    git git-flow git-sh git-extras \
     curl wget mc make zip unzip rar unrar \
     sqlite sqlite3 \
     python-mysqldb python-sqlite python-memcache \
@@ -20,5 +20,5 @@ sudo apt-get install -y \
 sudo apt-get upgrade -qy
 
 sudo apt-get dist-upgrade -qy
-    
+
 sudo apt-get install -y ruby gem
