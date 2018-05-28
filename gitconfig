@@ -38,8 +38,8 @@
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-     branch-name = rev-parse --abbrev-ref HEAD
-     cmp = !git commit "$@" && git push origin "$(git branch-name)"
+    branch-name = rev-parse --abbrev-ref HEAD
+    cmp = "!f(){ git commit \"$@\" && git push origin \"$(git branch-name)\"; }; f"
 
 [giggle]
     main-window-maximized = false
