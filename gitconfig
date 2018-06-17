@@ -40,7 +40,7 @@
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     branch-name = rev-parse --abbrev-ref HEAD
     cmp = "!f() { branch_name=$(git branch-name); git commit \"$@\"; git push origin $branch_name; }; f"
-
+    pullo = "!f() { branch_name=$(git branch-name); remote_name=$(git config --get \"branch.${branch_name}.remote\"); git pull \"$remote_name\" \"$branch_name\"; }; f"
 [giggle]
     main-window-maximized = false
     main-window-geometry = 882x546+0+0
