@@ -63,6 +63,15 @@ __has_parent_dir () {
     return 1;
 }
 
+# __branch_name () {
+#     local HEAD=$(cat .git/HEAD)
+#     if [ "${HEAD:0:16}" = "ref: refs/heads/" ]; then
+#         echo "${HEAD:16}"
+#     else
+#         echo "((${HEAD:0:7}...))"
+#     fi
+# }
+
 __vcs_name() {
     if [ -d .svn ]; then
         echo "-[svn]";
