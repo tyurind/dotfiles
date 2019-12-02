@@ -97,6 +97,11 @@ function fs()
   fi;
 }
 
+dockerps() {
+  # echo "CONTAINER\tNAMES\tCOMMAND\tSTATUS\tPORTS\n$(docker ps --format '[{{.ID}}\t{{.Names}}\t{{.Command}}\t{{.Status}}\t{{.Ports}}')" | column -t -s $'\t'
+
+  docker ps --format '[{{.ID}}]> {{.Names}}\t >> {{.Command}}\n\t\t{{.Ports}} \n --------------'
+}
 
 dockerip()
 {
