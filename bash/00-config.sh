@@ -22,6 +22,9 @@ fi
 if [ -d ~/.local/bin ]; then
     export PATH="~/.local/bin:$PATH"
 fi
+if [ -d ~/sbin ]; then
+    export PATH="~/sbin:$PATH"
+fi
 if [ -d ~/bin ]; then
     export PATH="~/bin:$PATH"
 fi

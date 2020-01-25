@@ -37,6 +37,16 @@ else
 fi
 
 
+if grep '~/.bash_aliases' ~/.bashrc &>/dev/null
+then
+	echo "Есть совпадения"
+else
+	echo ' ' >> ~/.bashrc
+	echo 'if [ -f ~/.bash_aliases ]; then source ~/.bash_aliases; fi' >> ~/.bashrc
+fi
+
+
+
 
 
 #############################
