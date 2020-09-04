@@ -37,3 +37,5 @@ alias ll='ls -hAl -v --file-type --color=auto --group-directories-first --time-s
 # alias grep='grep --color=auto -in'
 alias ..='cd ..'
 alias ps-grep='ps uax | grep'
+
+alias portsls='sudo netstat -tulpn'
