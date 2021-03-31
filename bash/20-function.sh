@@ -110,12 +110,22 @@ dockerip()
 
 dockerips()
 {
-    for dock in $(docker ps|tail -n +2|cut -d" " -f1)
-    do
-        local dock_ip=$(dockerip $dock)
-        regex="s/$dock\s\{4\}/${dock:0:4}  ${dock_ip:-local.host}/g;$regex"
-    done
-    docker ps -a | sed -e "$regex"
+    local arg="$@";
+    if [[ "$#" -eq 0 ]]; then
+      arg=$(docker ps -q)
+    fi
+    docker inspect --format='{{.Config.Hostname}} {{index (split .Name "/") 1}} {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $arg
+    # "$@"
+    #  {{range $p, $conf := .NetworkSettings.Ports}}{{range $i, $j := $conf}}{{$j.HostIp}}:{{$j.HostPort}}->{{$p}} {{end}} {{end}}' $(docker ps -q)
+    
+    # Full
+    # docker inspect --format='{{println}}{{.Config.Hostname}} {{index (split .Name "/") 1}} {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}} {{range $p, $conf := .NetworkSettings.Ports}}{{range $i, $j := $conf}}{{println}}        {{$j.HostIp}}:{{$j.HostPort}}->{{$p}} {{end}} {{end}}' $(docker ps -q)
+    # for dock in $(docker ps|tail -n +2|cut -d" " -f1)
+    # do
+    #     local dock_ip=$(dockerip $dock)
+    #     regex="s/$dock\s\{4\}/${dock:0:4}  ${dock_ip:-local.host}/g;$regex"
+    # done
+    # docker ps -a | sed -e "$regex"
 }
 alias _id_='docker ps -l -q'
 
